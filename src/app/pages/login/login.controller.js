@@ -84,6 +84,9 @@ class Controller {
             lg.userCheck = false;
         });
     }
+    gitTest(){
+
+    }
 
 }
 
