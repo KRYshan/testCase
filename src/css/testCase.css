@@ -1,0 +1,95 @@
+
+body{
+    padding:0;
+    margin:0;
+    padding-top: 70px;
+    height:100%;
+    font-weight:normal
+}
+
+
+.loginForm{
+    font-family: "Microsoft YaHei" !important;
+    margin-top:130px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    width: 400px;
+    margin-left: auto;
+    margin-right:auto;
+    position:relative;
+    padding:20px;
+    border: solid 2px  #eeeeee;
+
+
+}
+.loginForm  .formHeader{
+    height:60px;
+    line-height:60px;
+    margin-bottom:10px;
+    color: #3787dd;
+    text-align: center;
+    font-size: 2rem;
+    font-weight:bold;
+
+}
+.loginForm.alert{
+    margin-top: 20px;
+}
+
+div .nav{
+    padding: 0;
+    margin:0;
+}
+.home,.topbar{
+    font-size: 18px;
+
+
+}
+.caseForm{
+    border: solid 2px  #eeeeee;
+    border-radius: 15px;
+    font-weight: normal;
+
+}
+.caseForm .formHeader{
+    text-align: center;
+    font-size: 25px;
+    height:60px;
+    line-height:70px;
+    color:#666666;
+    font-weight: normal;
+    border-bottom: solid 1px  #eeeeee;
+
+}
+.caseForm .formContent{
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 18%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+label{
+    font-weight: normal;
+    color:#666666;
+}
+.caseInput{
+    width:70%;
+    height:36px;
+    font-weight: normal;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: inset;
+    line-height: 36px;
+    font-size: 18px;
+    color: #555555;
+    display: block;
+}
+.caseArea{
+    width:70%;
+    font-size: 18px;
+    display: block;
+    font-weight: normal;
+}
