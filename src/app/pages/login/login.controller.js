@@ -84,7 +84,7 @@ class Controller {
             lg.userCheck = false;
         });
     }
-  
+
 
 }
 

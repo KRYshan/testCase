@@ -1,6 +1,6 @@
     <ui-panel  border="true" shadow="false" class="col-md-3 sidebar">
 
-       <ui-tree data-drag-enabled="false" tree-model="cs.content" on-select="cs.onSelect(node)" load-data="cs.loadData(node)" >
+       <ui-tree data-drag-enabled="false" tree-model="cs.treeNodes" on-select="cs.onSelect(node)" load-data="cs.loadData(node)" >
        </ui-tree>
 
         <button class="btn btn-primary" ng-click="cs.addCatalogue(cs)">新增</button>

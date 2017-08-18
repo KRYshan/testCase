@@ -11,21 +11,19 @@ class caseService {
 
 
     }
-     //获取tree的根节点
-    requestTreeRoot() {
-        /*
-           this.$resource('/tree/root')
-         */
-        return this.$resource('nodeTable.json');
-    }
-    //通过id异步获取tree的子节点
+
+    //通过id异步获取tree的子节点,没有id就是根节点
     getTreeNode(id){
         var deferred=this.$q.defer();
         var url;
-        url="nodeChildren.json"
-        /*
-             url='/tree/'+id;
-         */
+        if(!id){
+            //url="/TestCasePro2/tree/0"
+            url="nodeTable.json";
+        }
+       else{
+            // url="/TestCasePro2/tree/"+id
+            url="nodeChildren.json";
+        }
         this.$http.get(url).success(
             function (data) {
                 deferred.resolve(data);
@@ -38,7 +36,7 @@ class caseService {
    //增加tree节点到后台
     addTreeNode(node){
         var deferred=this.$q.defer();
-        var url='/tree';
+        var url='/TestCasePro2/tree';
         this.$http.post(url,node).success(
             function (data) {
                 deferred.resolve(data);
@@ -49,8 +47,18 @@ class caseService {
         return deferred.promise;
     }
     //用例内容的增删改查
-    requestCase() {
-        return this.$resource('cases.json', {caseId: '@id'}, {});
+     getTestCase(id) {
+        var deferred=this.$q.defer();
+        var url='cases.json';
+        //var url='/TestCasePro2/case'+id
+        this.$http.get(url).success(
+            function (data) {
+                deferred.resolve(data);
+            }
+        ).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
     }
 }
 

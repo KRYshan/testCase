@@ -8,7 +8,7 @@ class addCaseController{
         this.prioritys=["p1","p2","p3","p4"];
         this.passes=["通过","未通过"];
         //修改的
-        this.upCase=caseService.requestCase().get({id:this.paramId});
+        caseService.getTestCase(this.paramId).then(data=>this.upCase=data);
         //增加的
         this.addCase={};
 
@@ -21,6 +21,7 @@ class addCaseController{
         upCase.caseId=caseId;
         //向后台请求保存的代码
         //更新完，如果标题名字改变了，tree节点上的名字也改变
+        /*
         this.caseService.requestCase().save({caseId:caseId},upCase,function (resp) {
             if(resp.code==1)   {
                 //把相应的更新，更改到tree节点中，更新到后台，并且界面上的tree也要更新
@@ -30,7 +31,7 @@ class addCaseController{
 
         });
 
-
+*/
     }
    //增加
 

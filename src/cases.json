@@ -1,6 +1,6 @@
 {
   "caseId":"1-2-1",
-  "caseTitle":"登录失败测试用例",
+  "caseTitle":"注册失败测试用例",
   "casePriority":"p1",
   "preCondition":"用户成功进入登录界面",
   "step":"1.输入用户名:123，密码:234；\r 2.点击登录按钮",
