@@ -93,3 +93,10 @@ label{
     display: block;
     font-weight: normal;
 }
+
+
+.tree-leaf .tree-title:hover{
+    cursor: pointer;
+}
+
+
