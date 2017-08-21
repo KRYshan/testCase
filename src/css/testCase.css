@@ -40,15 +40,12 @@ div .nav{
     padding: 0;
     margin:0;
 }
-.home,.topbar{
+.main,.topbar{
     font-size: 18px;
-
-
 }
 .caseForm{
-    border: solid 2px  #eeeeee;
-    border-radius: 15px;
-    font-weight: normal;
+     border: solid 2px  #eeeeee;
+     font-weight: normal;
 
 }
 .caseForm .formHeader{
@@ -94,9 +91,54 @@ label{
     font-weight: normal;
 }
 
-
-.tree-leaf .tree-title:hover{
+.tree-leaf :hover{
     cursor: pointer;
 }
+.tree-leaf {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
+.sidebar-left {
+    position: fixed;
+    top: 60px;
+    z-index: 20;
+    width: 250px;
+    height:600px;
+    border: solid 2px  #eeeeee;
+    margin-top: 30px;
+    margin-left:10px;
+}
+.container-fulid {
+    margin-left: 260px;
+}
+.container-fulid .container-inner {
+    padding: 0 35px;
+    padding-top: 20px;
+}
+.sidebar-title{
+    text-align: center;
+    font-size: 18px;
+    height:50px;
+    line-height:50px;
+    color:#666666;
+    font-weight: normal;
+    border-bottom: solid 1px  #eeeeee;
 
+}
+.sidebar-body{
+    width: 248px;
+    height:480px;
+    padding-top: 10px;
+    padding-left: 10px;
+    overflow-y:auto;
+    border-bottom: solid 1px  #eeeeee;
+
+}
+.btset{
+    position: absolute;
+    left:180px;
+    top: 550px;
+}

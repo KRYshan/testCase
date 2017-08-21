@@ -1,11 +1,26 @@
-    <ui-panel  border="true" shadow="false" class="col-md-3 sidebar">
-
-       <ui-tree data-drag-enabled="false" tree-model="cs.treeNodes" on-select="cs.onSelect(node)" load-data="cs.loadData(node)" >
+<!--
+<ui-panel  border="true" shadow="false" class="col-md-3 sidebar">
+       <p></p>
+       <ui-tree data-drag-enabled="false" tree-model="cs.treeNodes" highlight="true" on-select="cs.onSelect(node)" load-data="cs.loadData(node)" >
        </ui-tree>
 
         <button class="btn btn-primary" ng-click="cs.addCatalogue(cs)">新增</button>
-    </ui-panel>
+</ui-panel>
     <div class="col-md-9 ">
         <div ui-view></div>
     </div>
+-->
+<div class="sidebar-left transition">
+    <div class="sidebar-title">测试用例管理</div>
+    <div class="sidebar-body">
+        <ui-tree data-drag-enabled="false" tree-model="cs.treeNodes" title="{{cs.title}}" ng-mouseover="cs.title=''" highlight="true" on-select="cs.onSelect(node)"  load-data="cs.loadData(node)" >
+    </ui-tree>
+    </div>
+    <button class="btn btn-primary btset" ng-click="cs.addCatalogue(cs)">新增</button>
+</div>
+<div class="container-fulid">
+    <div class="container-inner">
+        <div ui-view></div>
+    </div>
+</div>
 

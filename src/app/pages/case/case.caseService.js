@@ -2,7 +2,7 @@
 /*
 暂时caseService没用了，可以尝试一下resource
  */
-class caseService {
+class CaseService {
     constructor($q, $timeout, $http, $resource) {
         this.$q = $q;
         this.$timeout = $timeout;
@@ -18,11 +18,11 @@ class caseService {
         var url;
         if(!id){
             //url="/TestCasePro2/tree/0"
-            url="nodeTable.json";
+            url="json/nodeTable.json";
         }
        else{
             // url="/TestCasePro2/tree/"+id
-            url="nodeChildren.json";
+            url="json/nodeChildren.json";
         }
         this.$http.get(url).success(
             function (data) {
@@ -36,7 +36,7 @@ class caseService {
    //增加tree节点到后台
     addTreeNode(node){
         var deferred=this.$q.defer();
-        var url='/TestCasePro2/tree';
+        var url='http://192.168.1.9:8080/TestCasePro2/tree';
         this.$http.post(url,node).success(
             function (data) {
                 deferred.resolve(data);
@@ -49,7 +49,7 @@ class caseService {
     //用例内容的增删改查
      getTestCase(id) {
         var deferred=this.$q.defer();
-        var url='cases.json';
+        var url='json/cases.json';
         //var url='/TestCasePro2/case'+id
         this.$http.get(url).success(
             function (data) {
@@ -62,4 +62,4 @@ class caseService {
     }
 }
 
-export default caseService;
+export default CaseService;

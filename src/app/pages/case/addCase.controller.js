@@ -1,4 +1,4 @@
-class addCaseController{
+class AddCaseController{
     constructor($stateParams,caseService,$state)
     {
         this.caseService=caseService;
@@ -52,4 +52,4 @@ class addCaseController{
     }
 
 }
-export default addCaseController;
+export default AddCaseController;

@@ -4,6 +4,7 @@ import caseService from './case.caseService';
 /*
 显示注入，不然压缩完了之后，会出现错误
  */
+controller.$inject=['$state', 'caseService', '$scope', 'uiAlert'];
 addCaseController.$inject=['$stateParams','caseService'];
 caseService.$inject=['$q','$timeout','$http','$resource'];
 export default

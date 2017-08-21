@@ -62,4 +62,5 @@ export default function config($urlRouterProvider, $stateProvider) {
         controllerAs:'lg',
         templateUrl:forgetUrl
     });
+
 }

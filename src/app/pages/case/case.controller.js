@@ -1,4 +1,4 @@
-class caseController {
+class CaseController {
     constructor($state, caseService, $scope, uiAlert) {
         this.$state = $state;
         this.title = "";
@@ -6,12 +6,13 @@ class caseController {
         this.nodeId = "";
         //当前tree节点
         this.node = "";
+        //为了鼠标滑动事件
         this.$scope = $scope;
         this.caseService = caseService;
         this.params = "123";
         this.name = "";
         //后台拥有的所有tree节点
-        this.treeNodes = "";
+        this.treeNodes = [];
         this.uiAlert = uiAlert;
         //在页面加载的时候，获取内容,只获取根节点，通过异步加载
         this.caseService.getTreeNode().then(data => this.treeNodes = data);
@@ -28,13 +29,13 @@ class caseController {
         this.title = node.title;
         this.nodeId = node.id;
         node.expaned = true;
-        //选中节点
+
         /*
        只有第三层，才增加用例或者修改用例
        */
         var s = this.$state;
         this.caseService.getTestCase(node.id).then(
-            function (data) {
+            (data)=> {
                 if (data.caseId == node.id) {
                     s.go("homeCase.catalogue.updateCase", {nodeId: node.id});
                 }
@@ -46,12 +47,11 @@ class caseController {
                         s.go("homeCase.catalogue", {nodeId: node.id});
                     }
                 }
-            },function (data) {
+            },  (data)=> {
                 console.error(data.message);
             }
         );
     }
-
     //增加节点
     addCatalogue(cs) {
         this.uiAlert.prompt('请输入标题').then(function (name) {
@@ -68,26 +68,25 @@ class caseController {
                         "children": [],
                     }
                     //将node节点，加入到后台
-                    /*
+                  /*
                     var newNode = {
-                        "id": newId,
-                        "title": cs.name,
-                        "pid": "0"
+                        nodeId: newId,
+                        title: cs.name,
+                        parentId: "0"
                     }
                     cs.caseService.addTreeNode(newNode).then(
-                         function(data){
-                             if(data.code=="1")
-                               {
-                               cs.treeNodes.push(newTreeNode);
-                               cs.nodeId="";
-                               }
-                     },function(data){
-                       console.error("加载节点错误");
-                     }
+                        function (data) {
+                            if (data.code == "1") {
+                                cs.treeNodes.push(newTreeNode);
+                                cs.nodeId = "";
+                            }
+                        }, function (data) {
+                            console.error("加载节点错误");
+                        }
                     );
-                  */
-                    cs.treeNodes.push(newTreeNode);
-                    cs.nodeId = "";
+                   */
+                     cs.treeNodes.push(newTreeNode);
+                     cs.nodeId = "";
                 }
                 else {
                     var parentIdStr = parentId.split('-');
@@ -103,28 +102,29 @@ class caseController {
 
                         }
                         //将node节点，加入到后台
-                        /*
-                           var newNode = {
-                               "id": newId,
-                               "title": cs.name,
-                               "pid": parentId,
-                          }
-                    cs.caseService.addTreeNode(newNode).then(
-                    function(data){
-                     if(data.code=="1")
-                          if (childNode.push(newTreeNode)) {
-                               cs.node.expanded = true;
-                            }
-                         cs.nodeId="";
-                     },function(data){
-                       console.error("加载子节点错误");
-                     }
-                    );
-                      */
-                        if (childNode.push(newTreeNode)) {
-                            cs.node.expanded = true;
+                     /*   var newNode = {
+                            nodeId: newId,
+                            title: cs.name,
+                            parentId: parentId,
                         }
-                        cs.nodeId = "";
+                        cs.caseService.addTreeNode(newNode).then(
+                            function (data) {
+                                if (data.code == "1")
+                                    if (childNode.push(newTreeNode)) {
+                                        cs.node.expanded = true;
+                                    }
+                                cs.nodeId = "";
+                            }, function (data) {
+                                console.error("加载子节点错误");
+                            }
+                        );
+                        */
+
+                          if (childNode.push(newTreeNode)) {
+                              cs.node.expanded = true;
+                          }
+                          cs.nodeId = "";
+
                     }
                     //用例
                     if (parentIdStr.length == 2) {
@@ -135,27 +135,32 @@ class caseController {
                             "title": cs.name
                         }
                         //将node节点，加入到后台
-                        /*
+                            /*
                         var newNode = {
-                                "id": newId,
-                                "title": cs.name,
-                                 "pid": parentId
-                                 }
-                    cs.caseService.addTreeNode(newNode).then(
-                    function(data){
-                     if(data.code=="1")
-                         cs.treeNodes.push(newTreeNode);
-                         cs.nodeId="";
-                     },function(data){
-                       console.error("加载子节点错误");
-                     }
-                    );
-                      */
-                        if (childNode.push(newTreeNode)) {
-                            cs.node.expanded = true;
-
+                            nodeId: newId,
+                            title: cs.name,
+                            parentId: parentId
                         }
-                        cs.parentId = cs.node.nodeId;
+                        cs.caseService.addTreeNode(newNode).then(
+                            function (data) {
+                                if (data.code == "1")
+                                    if (childNode.push(newTreeNode)) {
+                                        cs.node.expanded = true;
+
+                                    }
+                                cs.parentId = cs.node.nodeId;
+                            }, function (data) {
+                                console.error("加载子节点错误");
+                            }
+                        );
+                        */
+
+                          if (childNode.push(newTreeNode)) {
+                              cs.node.expanded = true;
+
+                          }
+                          cs.parentId = cs.node.nodeId;
+
                     }
                 }
 
@@ -165,4 +170,4 @@ class caseController {
 
 }
 
-export default caseController;
+export default CaseController;

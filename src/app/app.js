@@ -1,8 +1,9 @@
+import 'jquery_js';
 import 'framework_js';
 import 'pasp_js';
 import 'pasp_css';
 import 'testCase_css';
-import 'jquery_js'
+;
 /**
  * 自动页面加载
  */
@@ -22,10 +23,10 @@ let app = angular.module('testCase', dependencies).config(["$httpProvider", func
     $httpProvider.defaults.headers.post["Accept"] = "*/*";
     $httpProvider.defaults.transformRequest = function (data) {
         //把JSON数据转换成字符串形式
-        if (data !== undefined) {
-            return $.param(data);
-        }
-        return data;
+      if (data !== undefined) {
+           return $.param(data);
+       }
+       return data;
     };
 }]);
 
