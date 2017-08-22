@@ -1,4 +1,4 @@
-class CaseController {
+class CaseTreeController {
     constructor($state, caseService, $scope, uiAlert) {
         this.$state = $state;
         this.title = "";
@@ -6,20 +6,18 @@ class CaseController {
         this.nodeId = "";
         //当前tree节点
         this.node = "";
-        //为了鼠标滑动事件
         this.$scope = $scope;
         this.caseService = caseService;
         this.params = "123";
         this.name = "";
-        //后台拥有的所有tree节点
-        this.treeNodes = [];
         this.uiAlert = uiAlert;
         //在页面加载的时候，获取内容,只获取根节点，通过异步加载
-        this.caseService.getTreeNode().then(data => this.treeNodes = data);
+        caseService.getTreeNode().then(data => caseService.treeNodes = data);
     }
 
     //异步加载节点
     loadData(node) {
+
         return this.caseService.getTreeNode(node.id);
     }
 
@@ -32,25 +30,27 @@ class CaseController {
 
         /*
        只有第三层，才增加用例或者修改用例
+       根据节点id查找用例，如果返回当前id的用例说明用例存在则跳转到修改用例页面
        */
         var s = this.$state;
         this.caseService.getTestCase(node.id).then(
             (data)=> {
                 if (data.caseId == node.id) {
-                    s.go("homeCase.catalogue.updateCase", {nodeId: node.id});
+                    s.go("homeCase.caseTree.updateCase", {nodeId: node.id,nodeTitle:node.title});
                 }
                 else {
                     if (node.id.split('-').length == 3) {
-                        s.go("homeCase.catalogue.addCase", {nodeId: node.id});
+                        s.go("homeCase.caseTree.addCase", {nodeId: node.id,nodeTitle:node.title});
                     }
                     else {
-                        s.go("homeCase.catalogue", {nodeId: node.id});
+                        s.go("homeCase.caseTree", {nodeId: node.id});
                     }
                 }
             },  (data)=> {
-                console.error(data.message);
+                console.error("获取节点失败");
             }
         );
+
     }
     //增加节点
     addCatalogue(cs) {
@@ -60,7 +60,7 @@ class CaseController {
                 var parentId = cs.nodeId;
                 //默认增加的是项目
                 if (parentId == "") {
-                    var lastId = cs.treeNodes.length ? cs.treeNodes[cs.treeNodes.length - 1].id : 0;
+                    var lastId = cs.caseService.treeNodes.length ? cs.caseService.treeNodes[cs.caseService.treeNodes.length - 1].id : 0;
                     var newId = Number.parseInt(lastId) + 1 + "";
                     var newTreeNode = {
                         "id": newId,
@@ -77,15 +77,18 @@ class CaseController {
                     cs.caseService.addTreeNode(newNode).then(
                         function (data) {
                             if (data.code == "1") {
-                                cs.treeNodes.push(newTreeNode);
+                                cs.caseService.treeNodes.push(newTreeNode);
                                 cs.nodeId = "";
+                            }
+                            else{
+                            console.error(data.message);
                             }
                         }, function (data) {
                             console.error("加载节点错误");
                         }
                     );
                    */
-                     cs.treeNodes.push(newTreeNode);
+                     cs.caseService.treeNodes.push(newTreeNode);
                      cs.nodeId = "";
                 }
                 else {
@@ -93,7 +96,7 @@ class CaseController {
                     var newId, childNode;
                     if (parentIdStr.length == 1) {
                         //模块
-                        childNode = cs.treeNodes[Number.parseInt(parentIdStr[0]) - 1].children;
+                        childNode = cs.caseService.treeNodes[Number.parseInt(parentIdStr[0]) - 1].children;
                         newId = parentIdStr[0] + '-' + (childNode.length + 1);
                         var newTreeNode = {
                             "id": newId,
@@ -109,11 +112,15 @@ class CaseController {
                         }
                         cs.caseService.addTreeNode(newNode).then(
                             function (data) {
-                                if (data.code == "1")
+                                if (data.code == "1"){
                                     if (childNode.push(newTreeNode)) {
                                         cs.node.expanded = true;
                                     }
                                 cs.nodeId = "";
+                                }
+                                else{
+                                console.error(data.message);
+                                }
                             }, function (data) {
                                 console.error("加载子节点错误");
                             }
@@ -128,7 +135,7 @@ class CaseController {
                     }
                     //用例
                     if (parentIdStr.length == 2) {
-                        childNode = cs.treeNodes[Number.parseInt(parentIdStr[0] - 1)].children[Number.parseInt(parentIdStr[1] - 1)].children;
+                        childNode = cs.caseService.treeNodes[Number.parseInt(parentIdStr[0] - 1)].children[Number.parseInt(parentIdStr[1] - 1)].children;
                         newId = parentIdStr[0] + '-' + parentIdStr[1] + '-' + (childNode.length + 1);
                         var newTreeNode = {
                             "id": newId,
@@ -143,12 +150,16 @@ class CaseController {
                         }
                         cs.caseService.addTreeNode(newNode).then(
                             function (data) {
-                                if (data.code == "1")
+                                if (data.code == "1"){
                                     if (childNode.push(newTreeNode)) {
                                         cs.node.expanded = true;
 
                                     }
                                 cs.parentId = cs.node.nodeId;
+                                }
+                                else{
+                                console.error(data.message);
+                                }
                             }, function (data) {
                                 console.error("加载子节点错误");
                             }
@@ -166,8 +177,9 @@ class CaseController {
 
             }
         });
+
     }
 
 }
 
-export default CaseController;
+export default CaseTreeController;

@@ -13,10 +13,10 @@
 <div class="sidebar-left transition">
     <div class="sidebar-title">测试用例管理</div>
     <div class="sidebar-body">
-        <ui-tree data-drag-enabled="false" tree-model="cs.treeNodes" title="{{cs.title}}" ng-mouseover="cs.title=''" highlight="true" on-select="cs.onSelect(node)"  load-data="cs.loadData(node)" >
+        <ui-tree data-drag-enabled="false" tree-model="ctc.caseService.treeNodes" title="{{ctc.title}}" highlight="true" on-select="ctc.onSelect(node)"  load-data="ctc.loadData(node)" >
     </ui-tree>
     </div>
-    <button class="btn btn-primary btset" ng-click="cs.addCatalogue(cs)">新增</button>
+    <button class="btn btn-primary btset" ng-click="ctc.addCatalogue(ctc)">新增</button>
 </div>
 <div class="container-fulid">
     <div class="container-inner">

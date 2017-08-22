@@ -1,15 +1,15 @@
-import controller from './case.controller';
-import addCaseController from './addCase.controller';
-import caseService from './case.caseService';
+import caseTreeController from './caseTree.controller';
+import caseContentController from './caseContent.controller';
+import caseService from './case.service';
 /*
 显示注入，不然压缩完了之后，会出现错误
  */
-controller.$inject=['$state', 'caseService', '$scope', 'uiAlert'];
-addCaseController.$inject=['$stateParams','caseService'];
+caseTreeController.$inject=['$state', 'caseService', '$scope', 'uiAlert'];
+caseContentController.$inject=['$stateParams','caseService','$state'];
 caseService.$inject=['$q','$timeout','$http','$resource'];
 export default
 angular.module('testCase.case', ['pasp.ui','ngResource'])
     .service('caseService',caseService)
-    .controller('controller',controller)
-    .controller('addCaseController',addCaseController)
+    .controller('caseTreeController',caseTreeController)
+    .controller('caseContentController',caseContentController)
     .name;

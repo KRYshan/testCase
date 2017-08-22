@@ -1,13 +1,12 @@
 import templateUrl from './login.view.html';
 import forgetUrl from './forget.view.html';
-import catalogueUrl from '../case/catalogue.view.html';
+import caseTreeUrl from '../case/caseTree.view.html';
 import addCaseUrl from '../case/addCase.view.html';
 import homeCaseUrl from '../case/homeCase.view.html';
 import updateCaseUrl from '../case/updateCase.view.html';
-import showCaseUrl  from '../case/showCase.view.html';
 import topbarUrl from '../case/topbar.view.html';
-import caseController  from '../case/case.controller';
-import addCaseController  from '../case/addCase.controller';
+import caseTreeController  from '../case/caseTree.controller';
+import caseContentController  from '../case/caseContent.controller';
 import controller  from './login.controller';
 export default function config($urlRouterProvider, $stateProvider) {
     "ngInject";
@@ -31,31 +30,31 @@ export default function config($urlRouterProvider, $stateProvider) {
 
         }
 
-    ).state('homeCase.catalogue', {
-        url: '/catalogue',
-        controller: caseController,
-        controllerAs: 'cs',
+    ).state('homeCase.caseTree', {
+        url: '/caseTree',
+        controller: caseTreeController,
+        controllerAs: 'ctc',
         views:{
             'main@homeCase':{
-                controller: caseController,
-                controllerAs: 'cs',
-                templateUrl:catalogueUrl
+                controller: caseTreeController,
+                controllerAs: 'ctc',
+                templateUrl:caseTreeUrl
             }
         }
 
-    }).state('homeCase.catalogue.addCase',{
-        controller: addCaseController,
-        controllerAs: 'acc',
+    }).state('homeCase.caseTree.addCase',{
+        controller: caseContentController,
+        controllerAs: 'ccc',
         url:'/addCase',
         templateUrl:addCaseUrl,
-        params:{"nodeId":{}}
+        params:{"nodeId":{},"nodeTitle":{}}
 
-    }).state('homeCase.catalogue.updateCase',{
-        controller: addCaseController,
-        controllerAs: 'acc',
+    }).state('homeCase.caseTree.updateCase',{
+        controller: caseContentController,
+        controllerAs: 'ccc',
         url:'/updateCase',
         templateUrl:updateCaseUrl,
-        params:{"nodeId":{}}
+        params:{"nodeId":{},"nodeTitle":{}}
     }).state('forget',{
         url:'/forget',
         controller:controller,

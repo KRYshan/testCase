@@ -8,39 +8,56 @@
             <form name="form" novalidate>
                 <div class="form-group">
                     <label>用例标题</label>
-                    <input type="text" class="caseInput" ng-model="acc.upCase.caseTitle" />
+                    <input type="text" class="caseInput" ng-model="ccc.updateCase.caseTitle" name="caseTitle"
+                           ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                           required-error-message="不能为空"
+                    />
                 </div>
-                <!--下拉列表-->
                 <div class="form-group">
-                    <label>用例级别</label>
-                    <select class="caseInput" ng-model="acc.upCase.casePriority">
-                        <option ng-repeat="x in acc.prioritys">{{x}}</option>
+                    <label>用例优先级</label>
+                    <select class="caseInput" ng-model="ccc.updateCase.casePriority" name="casePriority"
+                            ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                            required-error-message="不能为空">
+                        <option ng-repeat="x in ccc.prioritys">{{x}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>前置条件</label>
-                    <textarea  class="caseArea" rows="3" ng-model="acc.upCase.preCondition">
+                    <textarea  class="caseArea" rows="3" name="preCondition"ng-model="ccc.updateCase.preCondition" placeholder="请输入前置条件"
+                               ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                               required-error-message="不能为空">
+                </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>执行步骤</label>
+                    <textarea  class="caseArea" rows="3" ng-model="ccc.updateCase.step" name="step" placeholder="请输入执行步骤"
+                               ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                               required-error-message="不能为空">
                 </textarea>
                 </div>
                 <div class="form-group">
-                    <label>执行步骤</label>
-                    <textarea  class="caseArea" rows="3" ng-model="acc.upCase.step"></textarea>
-                </div>
-                <div class="form-group">
                     <label>预期结果</label>
-                    <textarea  class="caseArea" rows="3" ng-model="acc.upCase.expected"></textarea>
+                    <textarea  class="caseArea" rows="3" ng-model="ccc.updateCase.expected" name="expected" placeholder="请输入预期结果"
+                               ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                               required-error-message="不能为空"
+                    ></textarea>
                 </div>
                 <div class="form-group">
                     <label>执行结果</label>
-                    <textarea  class="caseArea" rows="3" ng-model="acc.upCase.result"></textarea>
+                    <textarea  class="caseArea" rows="3" ng-model="ccc.updateCase.result" name="result" placeholder="请输入执行结果"
+                               ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                               required-error-message="不能为空"
+                    ></textarea>
                 </div>
                 <div class="form-group">
                     <label>用例执行是否通过</label>
-                    <select class="caseInput" ng-model="acc.upCase.pass">
-                        <option ng-repeat="x in acc.passes">{{x}}</option>
+                    <select class="caseInput" ng-model="ccc.updateCase.pass" name="pass"   ui-validator="required" valid-method="blur" message-append-to-body="true" message-type="tooltip-right"
+                            required-error-message="不能为空" >
+                        <option ng-repeat="x in ccc.passes">{{x}}</option>
                     </select>
                 </div>
-                <button ui-validation-submit="form" class="btn btn-primary" ng-click="acc.updateCase()" >修改</button>
+                <button ui-validation-submit="form" class="btn btn-primary" ng-click="ccc.updateTestCase(ccc)" >修改</button>
             </form>
         </div>
     </div>
