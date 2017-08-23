@@ -20,9 +20,9 @@ class Controller {
         this.$http({
             method: 'post',
              //本地
-            //url:http://localhost:8080/TestCasePro2/login
+            url:'http://localhost:8080/TestCasePro2/login',
             //远程调用API
-            url: 'http://192.168.1.9:8080/TestCasePro2/login',
+              // url: 'http://192.168.1.9:8080/TestCasePro2/login',
             data:user
             })
             .success(function(data) {
@@ -39,9 +39,10 @@ class Controller {
             lg.userCheck = false;
         });
     }
-
 */
+
   //本地测试情况
+
     login(lg){
         var user={
             userName:this.user.userName,
@@ -63,5 +64,6 @@ class Controller {
             lg.userCheck = false;
         });
     }
+
 }
 export default Controller;

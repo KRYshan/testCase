@@ -43,7 +43,7 @@ class CaseTreeController {
                         s.go("homeCase.caseTree.addCase", {nodeId: node.id,nodeTitle:node.title});
                     }
                     else {
-                        s.go("homeCase.caseTree", {nodeId: node.id});
+                        s.go("homeCase.caseTree.showCase", {nodeId: node.id});
                     }
                 }
             },  (data)=> {
@@ -68,7 +68,7 @@ class CaseTreeController {
                         "children": [],
                     }
                     //将node节点，加入到后台
-                  /*
+                /*
                     var newNode = {
                         nodeId: newId,
                         title: cs.name,
@@ -87,7 +87,7 @@ class CaseTreeController {
                             console.error("加载节点错误");
                         }
                     );
-                   */
+                */
                      cs.caseService.treeNodes.push(newTreeNode);
                      cs.nodeId = "";
                 }
@@ -105,7 +105,8 @@ class CaseTreeController {
 
                         }
                         //将node节点，加入到后台
-                     /*   var newNode = {
+                        /*
+                       var newNode = {
                             nodeId: newId,
                             title: cs.name,
                             parentId: parentId,
@@ -125,9 +126,8 @@ class CaseTreeController {
                                 console.error("加载子节点错误");
                             }
                         );
-                        */
-
-                          if (childNode.push(newTreeNode)) {
+                */
+                         if (childNode.push(newTreeNode)) {
                               cs.node.expanded = true;
                           }
                           cs.nodeId = "";
@@ -142,7 +142,7 @@ class CaseTreeController {
                             "title": cs.name
                         }
                         //将node节点，加入到后台
-                            /*
+/*
                         var newNode = {
                             nodeId: newId,
                             title: cs.name,
@@ -164,12 +164,12 @@ class CaseTreeController {
                                 console.error("加载子节点错误");
                             }
                         );
-                        */
 
-                          if (childNode.push(newTreeNode)) {
-                              cs.node.expanded = true;
+*/
+                         if (childNode.push(newTreeNode)) {
+                             cs.node.expanded = true;
 
-                          }
+                        }
                           cs.parentId = cs.node.nodeId;
 
                     }

@@ -4,6 +4,7 @@ import caseTreeUrl from '../case/caseTree.view.html';
 import addCaseUrl from '../case/addCase.view.html';
 import homeCaseUrl from '../case/homeCase.view.html';
 import updateCaseUrl from '../case/updateCase.view.html';
+import showCaseUrl from '../case/showCase.view.html';
 import topbarUrl from '../case/topbar.view.html';
 import caseTreeController  from '../case/caseTree.controller';
 import caseContentController  from '../case/caseContent.controller';
@@ -55,6 +56,12 @@ export default function config($urlRouterProvider, $stateProvider) {
         url:'/updateCase',
         templateUrl:updateCaseUrl,
         params:{"nodeId":{},"nodeTitle":{}}
+    }).state('homeCase.caseTree.showCase',{
+        controller: caseContentController,
+        controllerAs: 'ccc',
+        url:'/showCase',
+        templateUrl:showCaseUrl,
+        params:{"nodeId":{}}
     }).state('forget',{
         url:'/forget',
         controller:controller,
