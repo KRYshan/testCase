@@ -1,4 +1,4 @@
-[{
+{"records":[{
   "caseId":"1-1-1",
   "caseTitle":"注册成功测试用例",
   "casePriority":"p1",
@@ -18,4 +18,4 @@
   "result":"提示用户名已存在",
   "pass":"通过"
 
-}]
+}],"totalItems":2}

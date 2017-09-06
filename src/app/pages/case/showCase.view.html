@@ -1,4 +1,7 @@
 <div class="container">
-     <ui-table  table-class="cases-list " table-model="ccc.casesList"  cell-scope="ccc.$scope" columns="ccc.caseColumns">
+     <div class="module-title">
+       {{csc.paramTitle}}
+     </div>
+     <ui-table  table-class="cases-list " table-model="csc.casesList" table-style="csc.tableStyleCases" cell-scope="csc.$scope" columns="csc.casesColumns" pagination="csc.paginationCases" loading="csc.tableCasesLoading" on-change="csc.changeCases(pagination)" >
     </ui-table>
 </div>

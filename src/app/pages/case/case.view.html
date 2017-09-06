@@ -1,0 +1,44 @@
+<!--
+<ui-panel  border="true" shadow="false" class="col-md-3 sidebar">
+       <p></p>
+       <ui-tree data-drag-enabled="false" tree-model="cs.treeNodes" highlight="true" on-select="cs.onSelect(node)" load-data="cs.loadData(node)" >
+       </ui-tree>
+
+        <button class="btn btn-primary" ng-click="cs.addCatalogue(cs)">新增</button>
+</ui-panel>
+    <div class="col-md-9 ">
+        <div ui-view></div>
+    </div>
+-->
+<div class="sidebar-left transition">
+    <div class="sidebar-title"><i class="fa fa-wrench"></i><span>测试用例管理</span></div>
+
+    <div class="sidebar-body">
+        <search search-model="ctc.searchModel" enter-key-event="ctc.enterKeyEvent(inputSearch)"></search>
+        <ui-tree data-drag-enabled="false" tree-model="ctc.caseService.treeNodes" title="{{ctc.title}}" highlight="true" on-select="ctc.onSelect(node)"  load-data="ctc.loadData(node)" icon="folder-o">
+       </ui-tree>
+    </div>
+    <!--
+    <div class=" btn-group btset " ui-dropdown auto-close="outsideClick">
+        <button type="button" class="btn btn-primary" ui-dropdown-toggle>目录设置&nbsp;<i class="fa fa-caret-down"></i></span>
+        </button>
+        <div ui-dropdown-menu class="btn-menu">
+            <button class="btn btn-default "  ng-click="ctc.addNode(ctc)">新增</button>
+            <button class="btn btn-default " ng-click="ctc.updateNode(ctc)">修改</button>
+            <button class="btn btn-default " ng-click="ctc.deleteNode(ctc)">删除</button>
+        </div>
+    </div>
+    -->
+
+    <div  class="btn-menu">
+        <button class="btn btn-default "  ng-click="ctc.addNode(ctc)">新增</button>
+        <button class="btn btn-default " ng-click="ctc.updateNode(ctc)">修改</button>
+        <button class="btn btn-default " ng-click="ctc.deleteNode(ctc)">删除</button>
+    </div>
+</div>
+<div class="container-fulid">
+    <div class="container-inner">
+        <div ui-view></div>
+    </div>
+</div>
+

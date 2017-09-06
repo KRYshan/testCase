@@ -1,6 +1,7 @@
-import 'jquery_js';
+
 import 'framework_js';
 import 'pasp_js';
+import 'jquery_js';
 import 'pasp_css';
 import 'testCase_css';
 ;
@@ -17,7 +18,27 @@ pageModules.keys().forEach((key) => {
 /**
  * 创建应用
  */
-let app = angular.module('testCase', dependencies);
+let app = angular.module('testCase', dependencies)
+    .run(['$rootScope','$state','$window',function($rootScope,$state,$window){
+    $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+        var user=angular.fromJson($window.sessionStorage.USER);
+        if(toState.name!='login') {
+            if (user == null) {
+                //阻止模版解析
+                event.preventDefault();
+                $state.go('login');
+                return;
+            }
+        }
+
+        //退出的时候或者重新进入login界面的时候，sessionStorge设为空
+        else{
+          $window.sessionStorage.clear();
+        }
+
+    }
+    )
+    }]);
 
 //跨域
 

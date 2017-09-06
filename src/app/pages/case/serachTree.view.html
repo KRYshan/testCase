@@ -1,0 +1,15 @@
+<!--搜索框模版-->
+<div class="search">
+    <input type="text" placeholder="可根据项目名称搜索" ng-model="searchModel"
+           ng-change="method.timeFlash()" ng-keydown="method.keyDownEvent($event)" >
+    <i class="fa fa-search searchBtn"></i>
+    <div class="search-list" ng-show="vm.searchShow"  id="searchList">
+        <a href="javascript:void(0)" ng-repeat="data in vm.dataList|limitTo:5" ng-mouseover="method.mouseOverEvent($index)"
+           ng-click="method.mouseClickEvent(data.value)">{{data.value}}</a>
+    </div>
+</div>
+<!--
+<div class="search"  >
+    <input type="submit" placeholder="项目名" ng-click="enterKeyEvent()" >
+</div>
+-->
