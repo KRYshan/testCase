@@ -51,7 +51,7 @@ export default {
             pasp_js: config.PATH_NODE_MODULES + '/ctg-pasp-ui/scripts/pasp.min.js',
             pasp_css: config.PATH_NODE_MODULES + '/ctg-pasp-ui/styles/pasp.min.css',
             testCase_css:config.PATH_SRC+'/css/testCase.css',
-            jquery_js:config.PATH_SRC+'/js/jquery-1.4.4.min.js',
+            jquery_js:config.PATH_SRC+'/js/jquery-3.1.1.min.js',
 
         }
 

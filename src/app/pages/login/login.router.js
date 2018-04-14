@@ -37,7 +37,8 @@ export default function config($urlRouterProvider, $stateProvider) {
 
         }
 
-    ).state('home.case', {
+    )
+        .state('home.case', {
         name:'home.case',
         url: '/case',
         controller: caseTreeController,

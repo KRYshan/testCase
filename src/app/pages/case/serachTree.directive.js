@@ -1,7 +1,6 @@
 import searchTreeUrl from './serachTree.view.html';
 export default function SearchTreeDirective(caseService,$timeout) {
     "ngInject";
-
     return {
         restrict: 'E',
         scope: {
@@ -9,7 +8,7 @@ export default function SearchTreeDirective(caseService,$timeout) {
             enterKeyEvent: '&'
         },
         templateUrl: searchTreeUrl,
-        link: function ($scope,$element) {
+        link: function ($scope) {
             let timer;
             let selectListIndex;
             $scope.vm = {};
@@ -94,7 +93,7 @@ export default function SearchTreeDirective(caseService,$timeout) {
                     case 13:
                        $scope.enterKeyEvent({inputSearch:$scope.searchModel});
                        $scope.method.closeSearch();
-                        break;
+                       break;
                 }
 
             }

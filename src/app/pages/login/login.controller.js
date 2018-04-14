@@ -45,7 +45,7 @@ class controller {
 
     /*
      * 功能：设置记住密码的过期时间
-     * 参数:interval:字符串表达式，表示时间间隔单位
+     * 参数: interval:字符串表达式，表示时间间隔单位
      *       number:数值表达式，表示时间的间隔数量
      *       date:时间对象，表示当前时间
      *
@@ -94,8 +94,8 @@ class controller {
     /*
         login(lg){
             let user={
-                userName:this.user.userName,
-                userPassword:this.user.userPassword
+                userName:lg.user.userName,
+                userPassword:lg.user.userPassword
             };
             this.$http({
                 method: 'post',

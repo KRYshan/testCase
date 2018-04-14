@@ -28,6 +28,7 @@ gulp.task('serve', () => {
                 },
                 publicPath: webpackConfig.output.publicPath
             }),
+            //热更新中间件
             webpackHotMiddleware(compiler)
         ]
     })

@@ -14,9 +14,7 @@ class caseOperateController{
        // caseService.queryTestCaseById(this.paramId).then(data=>this.casesList=data);
         //增加用例
         this.addCase={};
-        this.addCase.caseTitle=this.paramTitle!='[object Object]'?this.paramTitle:"";
-
-
+        this.addCase.caseTitle=caseService.isEmptyObject(this.paramTitle)?"":this.paramTitle;
 
     }
 
